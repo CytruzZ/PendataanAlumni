@@ -30,7 +30,7 @@ putenv('APP_SERVICES_CACHE=/tmp/bootstrap/cache/services.php');
 putenv('VIEW_COMPILED_PATH=/tmp/storage/framework/views');
 putenv('CACHE_DRIVER=array');
 putenv('LOG_CHANNEL=stderr');
-putenv('SESSION_DRIVER=cookie');
+putenv('SESSION_DRIVER=file');
 
 // Forward Vercel requests to normal Laravel public/index.php
 require __DIR__ . '/../public/index.php';
