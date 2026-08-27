@@ -231,7 +231,7 @@ class AlumniController extends Controller
      */
     public function integration()
     {
-        $webhookUrl = route('api.gform_webhook');
+        $webhookUrl = url('/webhook.php');
         $secretToken = env('GFORM_WEBHOOK_SECRET', 'mni_ipb_alumni_secret_key_2026');
 
         return view('alumni.integration', compact('webhookUrl', 'secretToken'));
