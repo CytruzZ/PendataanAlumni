@@ -22,7 +22,7 @@ class UserSeeder extends Seeder
                 'name' => 'Admin MNI IPB',
                 'role' => 'admin',
                 'nim_nip' => '198501012010121001',
-                'no_wa' => '6281234567890',
+                'no_wa' => '6281575006649',
                 'password' => Hash::make('123'),
             ]
         );

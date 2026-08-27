@@ -267,13 +267,8 @@
 
                             @if(Auth::check() && Auth::user()->isMahasiswa())
                                 @php
-                                    $adminWa = "6281234567890";
-                                    $studentName = urlencode(Auth::user()->name);
-                                    $alumniName = urlencode($alumni->nama_lengkap);
-                                    $alumniCompany = urlencode($alumni->nama_perusahaan ?: 'Perusahaan');
-                                    $alumniAngkatan = urlencode($alumni->angkatan ?: '-');
-                                    $waText = "Halo%20Admin%20MNI%20IPB,%20saya%20Mahasiswa%20{$studentName}%20ingin%20meminta%20kontak%20WA%20Kak%20{$alumniName}%20(Angkatan%20{$alumniAngkatan},%20{$alumniCompany})%20untuk%20keperluan%20diskusi%20/sharing%20karir.";
-                                    $waUrl = "https://wa.me/{$adminWa}?text={$waText}";
+                                    $adminWa = "6281575006649";
+                                    $waUrl = "https://wa.me/{$adminWa}";
                                 @endphp
                                 <a href="{{ $waUrl }}" target="_blank"
                                    class="inline-flex items-center px-3 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl text-xs font-bold shadow-xs shadow-emerald-600/30 transition-all" title="Minta Kontak WA ke Admin">
@@ -416,8 +411,7 @@ function showDetail(id) {
         .then(data => {
             modalTitle.innerText = data.nama_lengkap;
             
-            const adminWaNum = "6281234567890";
-            const waMsg = encodeURIComponent(`Halo Admin MNI IPB, saya Mahasiswa ${currentUserName} ingin meminta kontak WA Kak ${data.nama_lengkap} (Angkatan ${data.angkatan || '-'}, ${data.nama_perusahaan || 'Perusahaan'}) untuk keperluan diskusi / sharing karir.`);
+            const adminWaNum = "6281575006649";
 
             const dosenTamuBadge = (data.bersedia_dosen_tamu || '').trim() === 'Bersedia' 
                 ? '<span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800">Bersedia</span>' 
@@ -462,7 +456,7 @@ function showDetail(id) {
                                 <span class="text-xs text-emerald-900 font-extrabold block">Ingin Terhubung dengan Alumni Ini?</span>
                                 <span class="text-[11px] text-slate-600 block">Hubungi Admin Prodi MNI IPB untuk meminta kontak WhatsApp resmi.</span>
                             </div>
-                            <a href="https://wa.me/${adminWaNum}?text=${waMsg}" target="_blank" 
+                            <a href="https://wa.me/${adminWaNum}" target="_blank" 
                                class="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl text-xs font-extrabold shadow-md shadow-emerald-600/30 transition-all flex items-center justify-center space-x-1.5 shrink-0">
                                 <span>💬 Minta Kontak via WA</span>
                             </a>
