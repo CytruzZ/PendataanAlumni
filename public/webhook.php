@@ -16,9 +16,11 @@ $app = require_once __DIR__.'/../bootstrap/app.php';
 
 $kernel = $app->make(Kernel::class);
 
+// Fully bootstrap Laravel framework (loads config, database, logging, facades)
+$kernel->bootstrap();
+
 $request = Request::capture();
 
-// Instantiate and invoke GFormWebhookController directly
 try {
     $controller = $app->make(GFormWebhookController::class);
     $response = $controller->handle($request);
