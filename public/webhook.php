@@ -16,10 +16,12 @@ $app = require_once __DIR__.'/../bootstrap/app.php';
 
 $kernel = $app->make(Kernel::class);
 
-// Fully bootstrap Laravel framework (loads config, database, logging, facades)
-$kernel->bootstrap();
-
 $request = Request::capture();
+
+// Bind request to container before bootstrapping so UrlGenerator gets the request
+$app->instance('request', $request);
+
+$kernel->bootstrap();
 
 try {
     $controller = $app->make(GFormWebhookController::class);
