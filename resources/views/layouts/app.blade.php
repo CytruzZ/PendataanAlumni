@@ -58,14 +58,6 @@
                 <!-- Right User Info & Actions -->
                 <div class="flex items-center space-x-2.5 sm:space-x-3">
                     @auth
-                        @if(Auth::user()->isAdmin())
-                            <a href="{{ route('alumni.export') }}" target="_blank"
-                               class="hidden md:inline-flex items-center px-3.5 py-2 rounded-xl text-xs font-bold text-slate-700 bg-slate-100/80 hover:bg-slate-200/80 border border-slate-200 transition-all space-x-1.5 shadow-xs">
-                                <svg class="w-3.5 h-3.5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-                                <span>Export CSV</span>
-                            </a>
-                        @endif
-
                         <!-- User Profile Pill -->
                         <div class="flex items-center space-x-2.5 bg-slate-100/80 border border-slate-200/80 px-3 py-1.5 rounded-2xl shadow-xs">
                             <div class="w-8 h-8 rounded-xl {{ Auth::user()->isAdmin() ? 'bg-indigo-600' : 'bg-emerald-600' }} text-white flex items-center justify-center text-xs font-black shadow-sm">

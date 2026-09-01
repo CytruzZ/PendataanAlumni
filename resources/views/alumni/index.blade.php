@@ -26,21 +26,6 @@
                     @endif
                 </p>
             </div>
-
-            @if(Auth::check() && Auth::user()->isAdmin())
-            <div class="flex flex-wrap items-center gap-2.5 shrink-0">
-                <button onclick="document.getElementById('importModal').classList.remove('hidden')" 
-                   class="px-4 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl font-bold text-xs shadow-md shadow-indigo-600/30 transition-all flex items-center space-x-2 cursor-pointer">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
-                    <span>Import CSV</span>
-                </button>
-                <a href="{{ route('alumni.export') }}" target="_blank" 
-                   class="px-4 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl font-bold text-xs shadow-md shadow-emerald-600/30 transition-all flex items-center space-x-2">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-                    <span>Export CSV</span>
-                </a>
-            </div>
-            @endif
         </div>
 
         <!-- Key Metrics Row -->
@@ -349,53 +334,6 @@
         </div>
     </div>
 </div>
-
-@if(Auth::check() && Auth::user()->isAdmin())
-<!-- Modal Import CSV/Spreadsheet -->
-<div id="importModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center hidden p-4">
-    <div class="bg-white rounded-3xl max-w-lg w-full shadow-2xl overflow-hidden border border-slate-100 transform transition-all">
-        <div class="bg-slate-950 text-white px-6 py-4.5 flex items-center justify-between border-b border-slate-800">
-            <h3 class="font-heading font-bold text-base flex items-center space-x-2 text-white">
-                <svg class="w-5 h-5 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
-                <span>Import Data Spreadsheet (CSV)</span>
-            </h3>
-            <button onclick="document.getElementById('importModal').classList.add('hidden')" class="text-slate-400 hover:text-white p-1 rounded-xl transition-colors cursor-pointer">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-            </button>
-        </div>
-        
-        <form action="{{ route('alumni.import') }}" method="POST" enctype="multipart/form-data" class="p-6 space-y-4">
-            @csrf
-            <div>
-                <p class="text-xs text-slate-600 mb-3 leading-relaxed">
-                    Unggah file rekap respon Google Form yang telah diunduh dalam format <strong>CSV (.csv)</strong> dari Google Sheets. Data akan otomatis disinkronkan ke database.
-                </p>
-                <div class="space-y-2">
-                    <label class="block text-xs font-bold text-slate-700">Pilih File CSV:</label>
-                    <input type="file" name="csv_file" accept=".csv,text/csv" required 
-                           class="w-full text-xs text-slate-500 file:mr-4 file:py-2.5 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100 cursor-pointer border border-slate-200 rounded-2xl p-2 bg-slate-50">
-                </div>
-            </div>
-
-            <div class="bg-indigo-50/60 p-3.5 rounded-2xl border border-indigo-100 text-[11px] text-indigo-900 space-y-1">
-                <span class="font-bold block">💡 Tips Pengunduhan:</span>
-                <p>Buka Spreadsheet data alumni &gt; File &gt; Download &gt; Comma Separated Values (.csv)</p>
-            </div>
-
-            <div class="flex items-center justify-end space-x-2 pt-2">
-                <button type="button" onclick="document.getElementById('importModal').classList.add('hidden')"
-                        class="px-4 py-2.5 text-slate-600 hover:bg-slate-100 rounded-xl font-bold text-xs transition-colors cursor-pointer">
-                    Batal
-                </button>
-                <button type="submit" 
-                        class="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl font-bold text-xs shadow-md shadow-indigo-600/30 transition-all flex items-center space-x-1.5 cursor-pointer">
-                    <span>Mulai Sinkronisasi</span>
-                </button>
-            </div>
-        </form>
-    </div>
-</div>
-@endif
 @endsection
 
 @push('scripts')
