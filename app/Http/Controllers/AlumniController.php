@@ -42,8 +42,8 @@ class AlumniController extends Controller
         $totalAlumni = Alumni::count();
         $totalBersediaDosen = Alumni::where('bersedia_dosen_tamu', 'Bersedia')->count();
         
-        // List angkatan lengkap dari 43 sampai 59 tanpa ada yang terlewat / terskip
-        $listAngkatan = range(43, 59);
+        // List angkatan lengkap dari 42 sampai 59 tanpa ada yang terlewat / terskip
+        $listAngkatan = range(42, 59);
 
         $listBidang = Alumni::select('bidang_industri')
             ->whereNotNull('bidang_industri')

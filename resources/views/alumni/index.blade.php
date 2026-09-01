@@ -47,7 +47,7 @@
             @endif
             <div class="bg-white/5 hover:bg-white/[0.08] transition-all rounded-2xl p-4 backdrop-blur-sm border border-white/10">
                 <span class="text-xs text-slate-400 font-semibold block">Rentang Angkatan</span>
-                <span class="text-2xl sm:text-3xl font-extrabold text-indigo-300 mt-1 block tracking-tight">{{ count($listAngkatan) }} Angkatan (43-59)</span>
+                <span class="text-2xl sm:text-3xl font-extrabold text-indigo-300 mt-1 block tracking-tight">{{ count($listAngkatan) }} Angkatan (42-59)</span>
             </div>
         </div>
     </div>
