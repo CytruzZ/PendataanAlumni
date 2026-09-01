@@ -23,7 +23,7 @@ class UserSeeder extends Seeder
                 'role' => 'admin',
                 'nim_nip' => '198501012010121001',
                 'no_wa' => '6281575006649',
-                'password' => Hash::make('123'),
+                'password' => Hash::make('456'),
             ]
         );
 
