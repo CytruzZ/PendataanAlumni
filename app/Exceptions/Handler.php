@@ -46,5 +46,18 @@ class Handler extends ExceptionHandler
         $this->reportable(function (Throwable $e) {
             //
         });
+
+        // Gracefully handle 419 Page Expired (CSRF Token Mismatch)
+        $this->renderable(function (\Illuminate\Session\TokenMismatchException $e, $request) {
+            if ($request->expectsJson()) {
+                return response()->json([
+                    'status' => 'error',
+                    'message' => 'Sesi Anda telah kedaluwarsa. Silakan muat ulang halaman atau login kembali.'
+                ], 419);
+            }
+
+            return redirect()->route('login')
+                ->with('warning', 'Sesi Anda telah berakhir karena halaman didiamkan cukup lama. Silakan masuk kembali.');
+        });
     }
 }

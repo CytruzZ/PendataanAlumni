@@ -114,6 +114,20 @@
     </div>
     @endif
 
+    @if(session('warning'))
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4">
+        <div class="bg-amber-500 text-white px-4 py-3 rounded-2xl shadow-lg shadow-amber-500/20 flex items-center justify-between border border-amber-400">
+            <div class="flex items-center space-x-3">
+                <svg class="w-5 h-5 text-white shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+                <span class="text-xs sm:text-sm font-medium">{{ session('warning') }}</span>
+            </div>
+            <button onclick="this.parentElement.remove()" class="text-amber-100 hover:text-white p-1">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+        </div>
+    </div>
+    @endif
+
     @if(session('error'))
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4">
         <div class="bg-rose-500 text-white px-4 py-3 rounded-2xl shadow-lg shadow-rose-500/20 flex items-center justify-between border border-rose-400">
@@ -140,6 +154,16 @@
             <p class="text-slate-400 font-medium">Portal Pendataan & Direktori Alumni Resmi</p>
         </div>
     </footer>
+
+    <!-- Keep-Alive Ping to Prevent 419 Page Expired -->
+    <script>
+    setInterval(function() {
+        fetch('{{ route('ping') }}', {
+            method: 'GET',
+            headers: { 'X-Requested-With': 'XMLHttpRequest' }
+        }).catch(function() {});
+    }, 10 * 60 * 1000); // Ping every 10 minutes
+    </script>
 
     @stack('scripts')
 </body>

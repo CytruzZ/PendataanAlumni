@@ -53,6 +53,12 @@
         </div>
         @endif
 
+        @if(session('warning'))
+        <div class="bg-amber-500/20 text-amber-300 border border-amber-500/30 px-4 py-3 rounded-2xl text-xs font-semibold text-center backdrop-blur-sm">
+            {{ session('warning') }}
+        </div>
+        @endif
+
         @if($errors->any())
         <div class="bg-rose-500/20 text-rose-300 border border-rose-500/30 px-4 py-3 rounded-2xl text-xs font-semibold space-y-1 backdrop-blur-sm">
             @foreach($errors->all() as $error)

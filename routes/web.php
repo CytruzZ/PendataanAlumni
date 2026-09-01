@@ -33,3 +33,6 @@ Route::middleware('auth')->group(function () {
         Route::delete('/alumni/{id}', [AlumniController::class, 'destroy'])->name('alumni.destroy');
     });
 });
+
+// Keep-alive heartbeat ping to prevent 419 Page Expired
+Route::get('/ping', fn() => response()->noContent())->name('ping');
